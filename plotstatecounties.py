@@ -1,3 +1,5 @@
+#!/usr/bin/python3.6
+
 import csv
 import datetime
 import urllib.request
@@ -6,7 +8,7 @@ import matplotlib.pyplot as plt
 
 # https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/state/detail/SCPRC-EST2019-18+POP-RES.csv
 populationMap = {}
-with open("co-est2019-alldata.csv") as csvfile:
+with open("co-est2019-alldata.csv", encoding="latin-1") as csvfile:
     readCSV = csv.reader(csvfile, delimiter=",")
     for row in readCSV:
         if row[6].endswith(" County"):
