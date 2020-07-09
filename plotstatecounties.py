@@ -67,7 +67,7 @@ counties = ["Carver", "Hennepin", "Ramsey", "Dakota", "Washington", "Scott"]
 # plot state
 stateCaseCounts = stateMap[state]
 x = [datetime.datetime.strptime(i[0], "%Y-%m-%d").date() for i in stateCaseCounts]
-y = [int(i[1]) * (10 ** 5) / int(populationMap[(state, state)]) for i in stateCaseCounts]
+y = [int(i[1]) / float(areaMap[(state, state)]) for i in stateCaseCounts]
 y = [y[i] - y[max(0, i - numDays)] for i in range(0, len(y))]
 
 plt.locator_params(axis="y", nbins=25)
@@ -80,7 +80,7 @@ i = 0
 for county in counties:
     countyCaseCounts = countyMap[(state, county)]
     x = [datetime.datetime.strptime(i[0], "%Y-%m-%d").date() for i in countyCaseCounts]
-    y = [int(i[1]) * (10 ** 5) / int(populationMap[(state, county)]) for i in countyCaseCounts]
+    y = [int(i[1]) / float(areaMap[(state, county)]) for i in countyCaseCounts]
     y = [y[i] - y[max(0, i - numDays)] for i in range(0, len(y))]
     plt.plot(x, y, marker="o", color="C%s" % i, label=county)
     i = i + 1
@@ -89,7 +89,7 @@ for county in counties:
 plt.legend(loc="upper left")
 plt.grid(axis="both")
 plt.ylim(bottom=0)
-plt.title(state + " new COVID-19 cases in past " + str(numDays) + " days per 100,000 population. Data from NYT "
+plt.title(state + " new COVID-19 cases in past " + str(numDays) + " days per sq mile. Data from NYT "
                                                                   "https://github.com/nytimes/covid-19-data and US "
                                                                   "census. By Evan Severson")
 plt.plot()
@@ -107,7 +107,7 @@ counties = ["Santa Clara", "San Mateo", "Los Angeles", "San Francisco", "San Die
 # plot state
 stateCaseCounts = stateMap[state]
 x = [datetime.datetime.strptime(i[0], "%Y-%m-%d").date() for i in stateCaseCounts]
-y = [int(i[1]) * (10 ** 5) / int(populationMap[(state, state)]) for i in stateCaseCounts]
+y = [int(i[1]) / float(areaMap[(state, state)]) for i in stateCaseCounts]
 y = [y[i] - y[max(0, i - numDays)] for i in range(0, len(y))]
 
 plt.locator_params(axis="y", nbins=25)
@@ -120,7 +120,7 @@ i = 0
 for county in counties:
     countyCaseCounts = countyMap[(state, county)]
     x = [datetime.datetime.strptime(i[0], "%Y-%m-%d").date() for i in countyCaseCounts]
-    y = [int(i[1]) * (10 ** 5) / int(populationMap[(state, county)]) for i in countyCaseCounts]
+    y = [int(i[1]) / float(areaMap[(state, county)]) for i in countyCaseCounts]
     y = [y[i] - y[max(0, i - numDays)] for i in range(0, len(y))]
     plt.plot(x, y, marker="o", color="C%s" % i, label=county)
     i = i + 1
@@ -129,7 +129,7 @@ for county in counties:
 plt.legend(loc="upper left")
 plt.grid(axis="both")
 plt.ylim(bottom=0)
-plt.title(state + " new COVID-19 cases in past " + str(numDays) + " days per 100,000 population. Data from NYT "
+plt.title(state + " new COVID-19 cases in past " + str(numDays) + " days per sq mile. Data from NYT "
                                                                   "https://github.com/nytimes/covid-19-data and US "
                                                                   "census. By Evan Severson")
 plt.plot()
@@ -147,7 +147,7 @@ counties = ["King", "Snohomish", "Pierce"]
 # plot state
 stateCaseCounts = stateMap[state]
 x = [datetime.datetime.strptime(i[0], "%Y-%m-%d").date() for i in stateCaseCounts]
-y = [int(i[1]) * (10 ** 5) / int(populationMap[(state, state)]) for i in stateCaseCounts]
+y = [int(i[1]) / float(areaMap[(state, state)]) for i in stateCaseCounts]
 y = [y[i] - y[max(0, i - numDays)] for i in range(0, len(y))]
 
 plt.locator_params(axis="y", nbins=25)
@@ -160,7 +160,7 @@ i = 0
 for county in counties:
     countyCaseCounts = countyMap[(state, county)]
     x = [datetime.datetime.strptime(i[0], "%Y-%m-%d").date() for i in countyCaseCounts]
-    y = [int(i[1]) * (10 ** 5) / int(populationMap[(state, county)]) for i in countyCaseCounts]
+    y = [int(i[1]) / float(areaMap[(state, county)]) for i in countyCaseCounts]
     y = [y[i] - y[max(0, i - numDays)] for i in range(0, len(y))]
     plt.plot(x, y, marker="o", color="C%s" % i, label=county)
     i = i + 1
@@ -169,7 +169,7 @@ for county in counties:
 plt.legend(loc="upper left")
 plt.grid(axis="both")
 plt.ylim(bottom=0)
-plt.title(state + " new COVID-19 cases in past " + str(numDays) + " days per 100,000 population. Data from NYT "
+plt.title(state + " new COVID-19 cases in past " + str(numDays) + " days per sq mile. Data from NYT "
                                                                   "https://github.com/nytimes/covid-19-data and US "
                                                                   "census. By Evan Severson")
 
@@ -181,7 +181,7 @@ counties = ["Maricopa", "Pima", "Pinal", "Gila"]
 # plot state
 stateCaseCounts = stateMap[state]
 x = [datetime.datetime.strptime(i[0], "%Y-%m-%d").date() for i in stateCaseCounts]
-y = [int(i[1]) * (10 ** 5) / int(populationMap[(state, state)]) for i in stateCaseCounts]
+y = [int(i[1]) / float(areaMap[(state, state)]) for i in stateCaseCounts]
 y = [y[i] - y[max(0, i - numDays)] for i in range(0, len(y))]
 
 plt.locator_params(axis="y", nbins=25)
@@ -194,7 +194,7 @@ i = 0
 for county in counties:
     countyCaseCounts = countyMap[(state, county)]
     x = [datetime.datetime.strptime(i[0], "%Y-%m-%d").date() for i in countyCaseCounts]
-    y = [int(i[1]) * (10 ** 5) / int(populationMap[(state, county)]) for i in countyCaseCounts]
+    y = [int(i[1]) / float(areaMap[(state, county)]) for i in countyCaseCounts]
     y = [y[i] - y[max(0, i - numDays)] for i in range(0, len(y))]
     plt.plot(x, y, marker="o", color="C%s" % i, label=county)
     i = i + 1
@@ -203,7 +203,7 @@ for county in counties:
 plt.legend(loc="upper left")
 plt.grid(axis="both")
 plt.ylim(bottom=0)
-plt.title(state + " new COVID-19 cases in past " + str(numDays) + " days per 100,000 population. Data from NYT "
+plt.title(state + " new COVID-19 cases in past " + str(numDays) + " days per sq mile. Data from NYT "
                                                                   "https://github.com/nytimes/covid-19-data and US "
                                                                   "census. By Evan Severson")
 
