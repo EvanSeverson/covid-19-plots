@@ -36,7 +36,7 @@ for line in iterator:
     countyMap[county].append((d[0], d[4]))
 
 state = "Minnesota"
-counties = ["Carver", "Hennepin", "Ramsey", "Dakota", "Washington"]
+counties = ["Carver", "Hennepin", "Ramsey", "Dakota", "Washington", "Scott"]
 
 # state = "California"
 # counties = ["Santa Clara", "San Mateo", "Los Angeles", "San Francisco", "San Diego"]
