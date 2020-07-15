@@ -33,10 +33,10 @@ with open("LND01.csv", encoding="latin-1") as csvfile:
 
 
 stateMap = {}
-iterator = iter(urllib.request.urlopen("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv"))
+iterator = open("covid-19-data/us-states.csv")
 next(iterator)
 for line in iterator:
-    d = line.decode('utf-8').split(",")
+    d = line.split(",")
     state = d[1]
     if not (state in stateMap):
         stateMap[state] = []
