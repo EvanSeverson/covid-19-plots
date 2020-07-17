@@ -2,6 +2,7 @@
 
 import csv
 import datetime
+import sys
 
 import matplotlib.pyplot as plt
 
@@ -63,7 +64,7 @@ for line in iterator:
     countyMap[county].append((d[0], d[4]))
 
 for state in toPlot:
-    plt.figure()
+    fig = plt.figure(figsize=(24, 12))
     counties = toPlot[state]
 
     stateCaseCounts = stateMap[state]
@@ -92,5 +93,8 @@ for state in toPlot:
     plt.title(state + " new COVID-19 cases in past " + str(numDays) + " days per 1 million people. Data from NYT "
                                                                       "https://github.com/nytimes/covid-19-data and US "
                                                                       "census. By Evan Severson")
+    if "--no-show" in sys.argv:  # might remove this condition check
+        fig.savefig(state + '.png', dpi=200)
 
-plt.show()
+if "--no-show" not in sys.argv:
+    plt.show()
