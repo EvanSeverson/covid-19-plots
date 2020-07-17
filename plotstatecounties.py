@@ -2,7 +2,6 @@
 
 import csv
 import datetime
-import urllib.request
 
 import matplotlib.pyplot as plt
 
@@ -54,11 +53,10 @@ for line in iterator:
     stateMap[state].append((d[0], d[3]))
 
 countyMap = {}
-iterator = iter(
-    urllib.request.urlopen("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv"))
+iterator = open("covid-19-data/us-counties.csv")
 next(iterator)
 for line in iterator:
-    d = line.decode('utf-8').split(",")
+    d = line.split(",")
     county = (d[2], d[1])
     if not (county in countyMap):
         countyMap[county] = []
