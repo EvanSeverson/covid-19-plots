@@ -2,6 +2,7 @@
 
 import csv
 import datetime
+import os
 import sys
 
 import matplotlib.pyplot as plt
@@ -9,6 +10,7 @@ import matplotlib.pyplot as plt
 
 numDays = 14  # Plot (f[date] - f[date - numDays])
 maxTicks = 60
+plotsDir = "plots"
 
 toPlot = {
     "Minnesota": ["Carver", "Hennepin", "Ramsey", "Dakota", "Washington", "Scott"],
@@ -94,7 +96,9 @@ for state in toPlot:
                                                                       "https://github.com/nytimes/covid-19-data and US "
                                                                       "census. By Evan Severson")
     if "--no-show" in sys.argv:  # might remove this condition check
-        fig.savefig(state + '.png', dpi=200)
+        if not os.path.exists(plotsDir):
+            os.mkdir(plotsDir)
+        fig.savefig(plotsDir + "/" + state + '.png', dpi=200)
 
 if "--no-show" not in sys.argv:
     plt.show()

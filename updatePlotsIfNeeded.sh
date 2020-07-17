@@ -7,6 +7,6 @@ if git status -uno | grep behind > /dev/null; then
     git merge
     cd $dir
     ./plotstatecounties.py --no-show
-    git add *.png
+    git add plots/
     git commit -m "Automatic: Update plots $(date)"
 fi
