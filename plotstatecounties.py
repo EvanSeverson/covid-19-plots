@@ -13,7 +13,7 @@ maxTicks = 60
 plotsDir = "plots"
 
 toPlot = {
-    "Minnesota": ["Carver", "Hennepin", "Ramsey", "Dakota", "Washington", "Scott"],
+    "Minnesota": ["Carver", "Hennepin", "Ramsey", "Dakota", "Washington", "Scott", "St. Louis"],
     "California": ["Santa Clara", "San Mateo", "Los Angeles", "San Francisco", "San Diego"],
     "Washington": ["King", "Snohomish", "Pierce"],
     "Arizona": ["Maricopa", "Pima", "Pinal", "Gila"]
