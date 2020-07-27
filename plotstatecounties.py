@@ -12,6 +12,9 @@ numDays = 14  # Plot (f[date] - f[date - numDays])
 maxTicks = 60
 plotsDir = "plots"
 
+plotDeaths = "--deaths" in sys.argv
+noShow = "--no-show" in sys.argv
+
 toPlot = {
     "Minnesota": ["Carver", "Hennepin", "Ramsey", "Dakota", "Washington", "Scott", "St. Louis"],
     "California": ["Santa Clara", "San Mateo", "Los Angeles", "San Francisco", "San Diego"],
@@ -53,7 +56,7 @@ for line in iterator:
     state = d[1]
     if not (state in stateMap):
         stateMap[state] = []
-    stateMap[state].append((d[0], d[3]))
+    stateMap[state].append((d[0], d[3 + (1 if plotDeaths else 0)]))
 
 countyMap = {}
 iterator = open("covid-19-data/us-counties.csv")
@@ -63,7 +66,7 @@ for line in iterator:
     county = (d[2], d[1])
     if not (county in countyMap):
         countyMap[county] = []
-    countyMap[county].append((d[0], d[4]))
+    countyMap[county].append((d[0], d[4 + (1 if plotDeaths else 0)]))
 
 for state in toPlot:
     fig = plt.figure(figsize=(24, 12))
@@ -92,13 +95,14 @@ for state in toPlot:
     plt.legend(loc="upper left")
     plt.grid(axis="both")
     plt.ylim(bottom=0)
-    plt.title(state + " new COVID-19 cases in past " + str(numDays) + " days per 1 million people. Data from NYT "
-                                                                      "https://github.com/nytimes/covid-19-data and US "
-                                                                      "census. By Evan Severson")
-    if "--no-show" in sys.argv:  # might remove this condition check
+    plt.title(state + " new COVID-19 " + ("deaths" if plotDeaths else "cases")
+              + " in past " + str(numDays) + " days per 1 million people. Data from NYT "
+                                             "https://github.com/nytimes/covid-19-data and US census. By Evan "
+                                             "Severson")
+    if noShow:  # might remove this condition check
         if not os.path.exists(plotsDir):
             os.mkdir(plotsDir)
-        fig.savefig(plotsDir + "/" + state + '.png', dpi=200)
+        fig.savefig(plotsDir + "/" + state + ("-deaths" if plotDeaths else "") + ".png", dpi=200)
 
-if "--no-show" not in sys.argv:
+if not noShow:
     plt.show()
